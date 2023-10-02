@@ -24,3 +24,27 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.nail-polish {
+    height: 100px;
+    width: 100px;
+}
+
+.red-polish-color {
+    background-color: red;
+}
+
+.black-polish-color {
+    background-color: black;
+}
+
+.purple-polish-color {
+    background-color: purple;
+}

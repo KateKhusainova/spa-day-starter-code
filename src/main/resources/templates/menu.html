@@ -27,16 +27,28 @@
     </th:block>
     </tbody>
 </table>
-    <div th:if="${manipedi.equals('manicure')}">
-        <h3>Manicure</h3>
-        <p th:replace="fragments :: manicureDescription"></p>
-    </div>
-    <div th:if="${manipedi.equals('pedicure')}">
-        <h3>Pedicure</h3>
-        <p th:replace="fragments :: pedicureDescription"></p>
+
+    <div>
+        <th:block th:if="${manipedi.equals('manicure')}">
+            <h3>Manicure</h3>
+            <p th:replace="fragments :: manicureDescription"></p>
+        </th:block>
+        <th:block th:if="${manipedi.equals('pedicure')}">
+            <h3>Pedicure</h3>
+            <p th:replace="fragments :: pedicureDescription"></p>
+        </th:block>
+        <th:block th:if="${manipedi.equals('both')}">
+            <h3>Manicure & Pedicure</h3>
+            <p th:replace="fragments :: manicureDescription"></p>
+            <p th:replace="fragments :: pedicureDescription"></p>
+        </th:block>
     </div>
 
 </div>
-
+<footer>
+    <div class="nail-polish red-polish-color"></div>
+    <div class="nail-polish black-polish-color "></div>
+    <div class="nail-polish purple-polish-color"></div>
+</footer>
 </body>
 </html>
