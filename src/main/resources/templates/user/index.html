@@ -2,17 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>Welcome</title>
 </head>
 <body>
 
-<a th:href="@{/}">Select Spa Services</a>
-
-<!--<th:block th:each="user : ${users}">-->
-<!--    <div>-->
-<!--        <a th:href="@{/user/{id}/details(id=${user.id})}" th:text="${user.username}"></a>-->
-<!--    </div>-->
-<!--</th:block>-->
+<p th:text = "'Welcome ' + ${user.username} + '!'"></p>
+<a th:href="@{/}">
+    Select your spa services here
+</a>
 
 </body>
 </html>

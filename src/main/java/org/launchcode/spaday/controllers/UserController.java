@@ -1,44 +1,45 @@
 package org.launchcode.spaday.controllers;
 
 import org.launchcode.spaday.models.User;
-import org.launchcode.spaday.data.UserData;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("user")
 public class UserController {
 
-    //private UserData userData = new UserData();
-
     @GetMapping("add")
-    public String displayAddUserForm () {
+    public String displayAddUserForm (Model model) {
+        model.addAttribute(new User());
         return "user/add";
     }
 
     @PostMapping
-    public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
-         // add form submission handling code here
-        if (user.getPassword().equals(verify)) {
-//            userData.add(user);
-//            model.addAttribute("users", this.userData.getAll());
-            return "user/index";
-        } else {
-            model.addAttribute("error", "Passwords should match");
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
+    public String processAddUserForm(Model model, String verify, @ModelAttribute @Valid User user, Errors errors) {
+        if(errors.hasErrors()) {
+            return "user/add";
+        } else if(!user.getPassword().equals(verify)) {
+            model.addAttribute("verify", verify);
+            model.addAttribute("error", "Passwords do not match");
             return "user/add";
         }
-    }
+        return "user/index";
+        }
 
-//    @GetMapping("{id}/details")
-//    public String getUserDetails(Model model, @PathVariable int id) {
-//        User user = this.userData.getById(id);
-//        model.addAttribute("user", user);
-//        return "user/details";
+    // Bonus:
+//    @PostMapping
+//    public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors) {
+//        if(errors.hasErrors()) {
+//            return "user/add";
+//        }
+//        return "user/index";
 //    }
+
 
 }

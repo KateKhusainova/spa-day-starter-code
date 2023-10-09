@@ -25,6 +25,10 @@ table {
             text-align: center;
 }
 
+.error {
+    color: red;
+}
+
 footer {
     display: flex;
     flex-direction: row;
